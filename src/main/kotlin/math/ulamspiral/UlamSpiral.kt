@@ -2,15 +2,17 @@ package math.ulamspiral
 
 import javafx.collections.FXCollections
 import math.CMath
+import math.Information
 import java.util.logging.Level
 
 data class UlamActor(val ux: Int, val uy: Int, val upx: Int, val upy: Int)
 
-class UlamSpiral(width: Double, height: Double, private var stepSize: Int) : CMath(
+@Information(
     name = "Ulam Spiral",
     author = "Stanisław Marcin Ulam",
     description = "The Ulam spiral is a simple method to represent prime numbers graphically. This method was discovered in 1963 by a Polish mathematician."
-) {
+)
+class UlamSpiral(width: Double, height: Double, private var stepSize: Int) : CMath() {
     private var x: Int
     private var y: Int
     private var px: Int
