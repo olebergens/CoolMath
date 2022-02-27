@@ -4,7 +4,7 @@ import math.ulamspiral.UlamSpiral
 import tornadofx.*
 
 
-class MainApp : App(CoolMathGraphic::class)
+class MainApp : App(MathificationGraphics::class)
 
 fun main(args: Array<String>) {
     launch<MainApp>(args)
@@ -13,7 +13,7 @@ fun main(args: Array<String>) {
 private const val WIDTH = 820.0
 private const val HEIGHT = 820.0
 
-class CoolMathGraphic : View("CoolMath") {
+class MathificationGraphics : View("CoolMath") {
 
     private var ulamSpiral: UlamSpiral? = null
 
