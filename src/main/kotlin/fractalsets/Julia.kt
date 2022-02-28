@@ -1,40 +1,45 @@
-package mandelbrot
+package fractalsets
 
 import processing.core.PApplet
+import processing.event.MouseEvent
+
+class Julia : PApplet() {
 
 
-class Mandelbrot : PApplet() {
-
+    private var angle = 0f
+    private var zoom: Float = 4f
 
     companion object Factory {
         fun run() {
-            val art = Mandelbrot()
-            art.setSize(500, 500)
+            val art = Julia()
+            art.setSize(640, 480)
             art.runSketch()
         }
     }
 
     override fun setup() {
-        pixelDensity = 1
         background(0)
-        //noLoop()
     }
 
     override fun draw() {
-        val w = 4f
+        val ca = cos(angle * PI)
+        val cb = sin(angle)
+        angle += 0.008f
+
+        val w = zoom // zoom
         val h = (w * height) / width
-        val xmin = -w/2
-        val ymin = -h/2
+        val minX = -w / 2
+        val minY = -h / 2
         loadPixels()
         val maxIter = 100
-        val xmax = xmin + w
-        val ymax = ymin + h
-        val dx: Float = (xmax - xmin) / width
-        val dy: Float = (ymax - ymin) / height
-        var y = ymin
+        val maxX = minX + w
+        val maxY = minY + h
+        val dx: Float = (maxX - minX) / width
+        val dy: Float = (maxY - minY) / height
+        var y = minY
 
         for (j in 0 until height) {
-            var x = xmin
+            var x = minX
             for (i in 0 until width) {
                 var a = x
                 var b = y
@@ -43,8 +48,8 @@ class Mandelbrot : PApplet() {
                 var absOld = 0.0f
                 var convergeNumber: Float = maxIter.toFloat()
                 while (n < maxIter) {
-                    val aa = a * a
-                    val bb = b * b
+                    val aa = sq(a)
+                    val bb = sq(b)
                     val abs = sqrt(aa + bb)
                     if (abs > max) {
                         val diffLast: Float = abs - absOld
@@ -52,9 +57,9 @@ class Mandelbrot : PApplet() {
                         convergeNumber = n + diffMax / diffLast
                         break
                     }
-                    val twoab: Float = 2 * a * b
-                    a = aa - bb + x
-                    b = twoab + y
+                    val twoAB: Float = 2 * a * b
+                    a = aa - bb + ca
+                    b = twoAB + cb
                     n++
                     absOld = abs
                 }
@@ -70,9 +75,16 @@ class Mandelbrot : PApplet() {
         updatePixels()
     }
 
+
+    override fun mouseWheel(event: MouseEvent) {
+        val direction: Int = event.count
+        if (direction < 0) zoom += .05.toFloat()
+        if (direction > 0) zoom -= .05.toFloat()
+    }
+
+
 }
 
 fun main() {
-    Mandelbrot.run()
+    Julia.run()
 }
-

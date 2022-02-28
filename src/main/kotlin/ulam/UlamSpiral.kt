@@ -2,9 +2,6 @@ package ulam
 
 import processing.core.PApplet
 
-private const val WIDTH = 500
-private const val HEIGHT = 500
-
 class UlamSpiral : PApplet() {
 
     private var x = 0f
@@ -19,7 +16,7 @@ class UlamSpiral : PApplet() {
     companion object Factory {
         fun run() {
             val art = UlamSpiral()
-            art.setSize(WIDTH, HEIGHT)
+            art.setSize(600, 600)
             art.runSketch()
         }
     }
