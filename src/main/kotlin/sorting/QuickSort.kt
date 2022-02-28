@@ -1,0 +1,4 @@
+package sorting
+
+class QuickSort {
+}
