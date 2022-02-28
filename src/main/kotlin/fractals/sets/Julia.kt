@@ -1,4 +1,4 @@
-package fractalsets
+package fractals.sets
 
 import processing.core.PApplet
 import processing.event.MouseEvent
