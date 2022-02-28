@@ -34,6 +34,7 @@ class UlamSpiral : PApplet() {
     }
 
     override fun draw() {
+        // while -> "instant" drawing of points
         while (step <= totalSteps) {
             if (prime(step)) {
                 fill(255)
@@ -44,6 +45,7 @@ class UlamSpiral : PApplet() {
             update()
             step++
         }
+        // this thing does an "animation" while drawing
         //if (step > totalSteps) noLoop()
     }
 
