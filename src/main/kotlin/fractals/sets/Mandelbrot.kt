@@ -3,7 +3,6 @@ package fractals.sets
 import processing.core.PApplet
 import processing.event.MouseEvent
 
-
 class Mandelbrot : PApplet() {
 
 

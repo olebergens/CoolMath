@@ -1,7 +1,6 @@
 package perlinnoise
 
 import processing.core.PApplet
-import kotlin.math.roundToInt
 
 class PerlinNoise2D : PApplet() {
 
