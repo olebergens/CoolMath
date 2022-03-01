@@ -11,7 +11,7 @@ class Particle(var width: Int, var height: Int, var cols: Float) {
     private var velocity: PVector = PVector(0f, 0f)
     private var accelaration: PVector = PVector(0f, 0f)
     private var maxSpeed = 4f
-    private var scale = 2f
+    private var scale = 8f
 
     fun update() {
         velocity.add(accelaration)

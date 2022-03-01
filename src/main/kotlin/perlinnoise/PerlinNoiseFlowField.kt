@@ -8,7 +8,7 @@ import processing.core.PVector
 open class PerlinNoiseFlowField : PApplet() {
 
     private var increment = 0.1f
-    private var scale = 1f
+    private var scale = 6f
     private var zOffset = 0f
 
     private var cols = floor((width / scale))
@@ -25,7 +25,6 @@ open class PerlinNoiseFlowField : PApplet() {
         }
     }
 
-
     override fun setup() {
         for (i in 0 until 300)
             particles.add(Particle(width, height, cols.toFloat()))
@@ -39,7 +38,7 @@ open class PerlinNoiseFlowField : PApplet() {
             var xOffset = 0f
             for (x in 0 until cols) {
                 val index = x + y * cols
-                val angle = noise(xOffset, yOffset, zOffset) * TWO_PI
+                val angle = noise(xOffset, yOffset, zOffset) * TWO_PI * 2
                 val v = PVector.fromAngle(angle)
                 v.setMag(1f)
                 flowFields.add(index, v)
@@ -47,8 +46,8 @@ open class PerlinNoiseFlowField : PApplet() {
                 xOffset += increment
             }
             yOffset += increment
+            zOffset += 0.0003f
         }
-        zOffset += 0.00003f
         for (i in 0 until particles.size) {
             particles[i].follow(flowFields)
             particles[i].update()
@@ -63,6 +62,7 @@ open class PerlinNoiseFlowField : PApplet() {
         line(particle.position.x, particle.position.y, particle.prevPos.x, particle.prevPos.y)
         particle.updatePrev()
     }
+
 }
 
 fun main() {
