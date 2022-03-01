@@ -6,7 +6,6 @@ class BubbleSort : PApplet() {
 
     private var values: IntArray? = null
     private var i = 0
-    private var start = false
 
     companion object Factory {
         fun run() {
@@ -22,25 +21,19 @@ class BubbleSort : PApplet() {
     }
 
     override fun draw() {
-        if (start) {
-            background(HSB)
-            if (i < values!!.size)
-                for (j in 0 until values!!.size - i - 1) {
-                    val a = values!![j]
-                    val b = values!![j + 1]
-                    if (a > b) swap(values!!, j, j + 1)
-                }
-            else noLoop()
-            i++
-            for (i in values!!.indices) {
-                stroke(128)
-                line(i.toFloat(), height.toFloat(), i.toFloat(), (height - values!![i]).toFloat())
+        background(0)
+        if (i < values!!.size)
+            for (j in 0 until values!!.size - i - 1) {
+                val a = values!![j]
+                val b = values!![j + 1]
+                if (a > b) swap(values!!, j, j + 1)
             }
+        else noLoop()
+        i++
+        for (i in values!!.indices) {
+            stroke(128)
+            line(i.toFloat(), height.toFloat(), i.toFloat(), (height - values!![i]).toFloat())
         }
-    }
-
-    override fun mouseClicked() {
-        start = !start
     }
 
     private fun swap(array: IntArray, a: Int, b: Int) {

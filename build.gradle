@@ -15,6 +15,10 @@ repositories {
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib"
     implementation group: 'org.processing', name: 'core', version: '3.3.7'
+
+    implementation(files("libs/math.main.jar"))
+    testImplementation(files("libs/math.main.jar"))
+
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
 }
