@@ -4,14 +4,13 @@ import processing.core.PVector
 import kotlin.math.floor
 import kotlin.random.Random
 
-class Particle(var width: Int, var height: Int, var cols: Float) {
+class Particle(var width: Int, var height: Int, var cols: Float, var scale: Float) {
     var position: PVector = PVector(Random.nextInt(width).toFloat(), Random.nextInt(height).toFloat())
     var prevPos: PVector = this.position.copy()
 
     private var velocity: PVector = PVector(0f, 0f)
     private var accelaration: PVector = PVector(0f, 0f)
     private var maxSpeed = 4f
-    private var scale = 8f
 
     fun update() {
         velocity.add(accelaration)

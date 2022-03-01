@@ -11,8 +11,8 @@ open class PerlinNoiseFlowField : PApplet() {
     private var scale = 5f
     private var zOffset = 0f
 
-    private var cols = floor((width / scale))
-    private var rows = floor((height / scale))
+    private var cols = floor((width / scale * 2))
+    private var rows = floor((height / scale * 2))
 
     private var particles = mutableListOf<Particle>()
     private var flowFields = mutableListOf<PVector>()
@@ -27,7 +27,7 @@ open class PerlinNoiseFlowField : PApplet() {
 
     override fun setup() {
         for (i in 0 until 300)
-            particles.add(Particle(width, height, cols.toFloat()))
+            particles.add(Particle(width, height, cols.toFloat(), scale))
         background(51)
     }
 
