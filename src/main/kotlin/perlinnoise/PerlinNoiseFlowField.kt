@@ -8,7 +8,7 @@ import processing.core.PVector
 open class PerlinNoiseFlowField : PApplet() {
 
     private var increment = 0.1f
-    private var scale = 6f
+    private var scale = 5f
     private var zOffset = 0f
 
     private var cols = floor((width / scale))
