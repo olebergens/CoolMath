@@ -1,5 +1,5 @@
 plugins {
-    id 'org.jetbrains.kotlin.jvm' version '1.5.10'
+    id 'org.jetbrains.kotlin.jvm' version '1.6.0'
     id 'java'
     id 'application'
 }
@@ -13,9 +13,9 @@ repositories {
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib"
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.6.0'
     implementation group: 'org.processing', name: 'core', version: '3.3.7'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0-native-mt'
 
     implementation(files("libs/math.main.jar"))
     testImplementation(files("libs/math.main.jar"))
