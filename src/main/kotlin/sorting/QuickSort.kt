@@ -37,11 +37,36 @@ class QuickSort : PApplet() {
 
     private fun quicksort(array: FloatArray, start: Int, end: Int) {
         if (start < end) {
-            val index = partition(array, start, end)
+            // verwende mot nicht, wenn nicht median-of-three genommen werden soll!
+            val mot = mot(array, start, end)
+            val index = partition(array, start, end, mot)
             quicksort(array, start, index - 1)
             quicksort(array, index + 1, end)
         }
     }
+
+    private fun mot(array: FloatArray, start: Int, end: Int): Float {
+        val mid = (start + end) / 2
+        if (array[start] > array[mid]) swap(array, start, mid)
+        if (array[start] > array[end]) swap(array, start, end)
+        if (array[mid] > array[mid]) swap(array, mid, end)
+        swap(array, mid, end - 1)
+        return array[end - 1]
+    }
+
+    private fun partition(array: FloatArray, start: Int, end: Int, mot: Float): Int {
+        var ptrL = start
+        var ptrR = end - 1
+        while (true) {
+            while (array[++ptrL] < mot); // scan größerer wert
+            while (array[--ptrR] > mot); // scan kleinerer wert
+            if (ptrL >= ptrR) break // pointer kreuzen sich
+            else swap(array, ptrL, ptrR)
+        }
+        swap(array, ptrL, end - 1)
+        return ptrL
+    }
+
 
     private fun partition(array: FloatArray, start: Int, end: Int): Int {
         var pivotIndex = start
